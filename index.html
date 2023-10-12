@@ -9,6 +9,11 @@
     </style>
 </head>
 <body>
+
+    <h1>Here is some content</h1>
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
     <script src="https://threejs.org/build/three.js"></script>
     <script>
 let scene, camera, renderer, points, geometry, material;
@@ -18,8 +23,14 @@ function init() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000); // Black background
+//    renderer.setClearColor(0x000000); // Black background
+    renderer.setClearColor(0xffffff);
+
     document.body.appendChild(renderer.domElement);
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left= "0";
+    renderer.domElement.style.zIndex= "-1";
 
     geometry = new THREE.BufferGeometry();
     const vertices = [];
@@ -34,7 +45,8 @@ function init() {
 
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
 
-    material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.01 });
+//    material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.01 });
+    material = new THREE.PointsMaterial({ color: 0x0000FF, size: 0.01 });
 
     points = new THREE.Points(geometry, material);
     scene.add(points);
